@@ -1,0 +1,33 @@
+{
+	"name" : "ness/lockery",
+	"description" : "Lockery Component - Ness",
+	"type" : "library",
+	"authors" : [{
+			"name" : "CurtisBarogla",
+			"email" : "curtis_barogla@outlook.fr",
+			"role" : "T.B.",
+			"homepage" : "https://github.com/CurtisBarogla"
+		}
+	],
+	"license" : "MIT",
+	"autoload" : {
+		"psr-4" : {
+			"Ness\\Component\\Lockery\\" : "src"
+		}
+	},
+	"autoload-dev" : {
+		"psr-4" : {
+			"NessTest\\Component\\Lockery\\" : "tests"
+		}
+	},
+	"keywords" : [
+		"resource",
+		"lock",
+		"integrity"
+	],
+	"require" : {
+		"php" : ">= 7.1"
+	},
+	"homepage" : "https://github.com/CurtisBarogla/Lockery",
+	"minimum-stability" : "stable"
+}
