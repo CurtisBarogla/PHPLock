@@ -16,6 +16,7 @@ use Psr\SimpleCache\CacheInterface;
 
 /**
  * Use a PSR-16 Cache implementation to store lock resource tokens
+ * Resource lock token cannot be cleared via this store as psr-16 cache does not allow you to match specific keys
  * 
  * @author CurtisBarogla <curtis_barogla@outlook.fr>
  *
@@ -35,7 +36,7 @@ class CacheTokenResourceStorage implements TokenResourceStorageInterface
      * 
      * @var string
      */
-    public const PREFIX = "ness_token_resource_";
+    public const PREFIX = "ness_token_resource_PSR16_";
     
     /**
      * Initialize storage
