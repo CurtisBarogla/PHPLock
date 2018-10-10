@@ -12,17 +12,18 @@ declare(strict_types = 1);
  
 namespace NessTest\Component\Lockery;
 
-use Ness\Component\Lockery\Storage\LockTokenPoolInterface;
-use Ness\Component\Lockery\Format\LockTokenFormatterAwareInterface;
-use Ness\Component\Lockery\Generator\LockTokenGeneratorInterface;
-use Ness\Component\Lockery\Format\LockTokenFormatterInterface;
-use Ness\Component\Lockery\Locker;
+use NessTest\Component\Lockey\LockeyTestCase;
+use Ness\Component\Lockey\Storage\LockTokenPoolInterface;
+use Ness\Component\Lockey\Format\LockTokenFormatterAwareInterface;
+use Ness\Component\Lockey\Generator\LockTokenGeneratorInterface;
+use Ness\Component\Lockey\Format\LockTokenFormatterInterface;
+use Ness\Component\Lockey\Locker;
 use PHPUnit\Framework\MockObject\MockObject;
-use Ness\Component\Lockery\LockableResourceInterface;
-use Ness\Component\Lockery\LockToken;
-use Ness\Component\Lockery\Exception\LockErrorException;
-use Ness\Component\Lockery\Exception\UnlockErrorException;
-use Ness\Component\Lockery\Exception\InvalidArgumentException;
+use Ness\Component\Lockey\LockableResourceInterface;
+use Ness\Component\Lockey\LockToken;
+use Ness\Component\Lockey\Exception\LockErrorException;
+use Ness\Component\Lockey\Exception\UnlockErrorException;
+use Ness\Component\Lockey\Exception\InvalidArgumentException;
 
 /**
  * Locker testcase
@@ -32,11 +33,11 @@ use Ness\Component\Lockery\Exception\InvalidArgumentException;
  * @author CurtisBarogla <curtis_barogla@outlook.fr>
  *
  */
-class LockerTest extends LockeryTestCase
+class LockerTest extends LockeyTestCase
 {
     
     /**
-     * @see \Ness\Component\Lockery\Locker::__construct()
+     * @see \Ness\Component\Lockey\Locker::__construct()
      */
     public function test__constructWithPoolFormatAware(): void
     {
@@ -50,7 +51,7 @@ class LockerTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Locker::lock()
+     * @see \Ness\Component\Lockey\Locker::lock()
      */
     public function testLock(): void
     {
@@ -80,7 +81,7 @@ class LockerTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Locker::free()
+     * @see \Ness\Component\Lockey\Locker::free()
      */
     public function testFree(): void
     {
@@ -101,7 +102,7 @@ class LockerTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Locker::bypass()
+     * @see \Ness\Component\Lockey\Locker::bypass()
      */
     public function testBypass(): void
     {
@@ -125,7 +126,7 @@ class LockerTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Locker::checkLocked()
+     * @see \Ness\Component\Lockey\Locker::checkLocked()
      */
     public function testCheckLocked(): void
     {
@@ -157,7 +158,7 @@ class LockerTest extends LockeryTestCase
                     /**_____EXCEPTIONS_____**/
     
     /**
-     * @see \Ness\Component\Lockery\Locker::lock()
+     * @see \Ness\Component\Lockey\Locker::lock()
      */
     public function testExceptionLockWhenPoolFailsToStoreTheToken(): void
     {
@@ -180,7 +181,7 @@ class LockerTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Locker::free()
+     * @see \Ness\Component\Lockey\Locker::free()
      */
     public function testExceptionFreeWhenTokensNotEquals(): void
     {
@@ -202,7 +203,7 @@ class LockerTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Locker::free()
+     * @see \Ness\Component\Lockey\Locker::free()
      */
     public function testExceptionFreeWhenPoolFailsToRemoveToken(): void
     {
@@ -224,7 +225,7 @@ class LockerTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Locker::bypass()
+     * @see \Ness\Component\Lockey\Locker::bypass()
      */
     public function testExceptionBypassWithNoPreviousTokenToRestoreWhenTokenResourceCannotBeLocked(): void
     {
@@ -252,7 +253,7 @@ class LockerTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Locker::bypass()
+     * @see \Ness\Component\Lockey\Locker::bypass()
      */
     public function testExceptionBypassWithPreviousTokenToRestoreWhenTokenResourceCannotBeLockedWhenOldTokenIsStoredWithSuccess(): void
     {
@@ -282,7 +283,7 @@ class LockerTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Locker::bypass()
+     * @see \Ness\Component\Lockey\Locker::bypass()
      */
     public function testExceptionBypassWithPreviousTokenToRestoreWhenTokenResourceCannotBeLockedWhenOldTokenCannotBeStored(): void
     {
@@ -312,7 +313,7 @@ class LockerTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Locker::checkLocked()
+     * @see \Ness\Component\Lockey\Locker::checkLocked()
      */
     public function testExceptionWhenResourceNameIsTooLong(): void
     {
@@ -328,7 +329,7 @@ class LockerTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Locker::checkLocked()
+     * @see \Ness\Component\Lockey\Locker::checkLocked()
      */
     public function testExceptionWhenResourceContainsInvalidCharacters(): void
     {

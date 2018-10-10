@@ -10,12 +10,12 @@ declare(strict_types = 1);
  *
  */
  
-namespace NessTest\Component\Lockery\Storage\Resource;
+namespace NessTest\Component\Lockey\Storage\Resource;
 
-use NessTest\Component\Lockery\LockeryTestCase;
+use NessTest\Component\Lockey\LockeyTestCase;
 use Psr\Cache\CacheItemInterface;
 use Psr\Cache\CacheItemPoolInterface;
-use Ness\Component\Lockery\Storage\Resource\CacheItemPoolTokenResourceStorage;
+use Ness\Component\Lockey\Storage\Resource\CacheItemPoolTokenResourceStorage;
 use Cache\TagInterop\TaggableCacheItemInterface;
 use Cache\TagInterop\TaggableCacheItemPoolInterface;
 
@@ -27,11 +27,11 @@ use Cache\TagInterop\TaggableCacheItemPoolInterface;
  * @author CurtisBarogla <curtis_barogla@outlook.fr>
  *
  */
-class CacheItemPoolTokenResourceStorageTest extends LockeryTestCase
+class CacheItemPoolTokenResourceStorageTest extends LockeyTestCase
 {
     
     /**
-     * @see \Ness\Component\Lockery\Storage\Resource\CacheItemPoolTokenResourceStorage::get()
+     * @see \Ness\Component\Lockey\Storage\Resource\CacheItemPoolTokenResourceStorage::get()
      */
     public function testGet(): void
     {
@@ -56,7 +56,7 @@ class CacheItemPoolTokenResourceStorageTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\Resource\CacheItemPoolTokenResourceStorage::get()
+     * @see \Ness\Component\Lockey\Storage\Resource\CacheItemPoolTokenResourceStorage::get()
      */
     public function testAdd(): void
     {
@@ -89,7 +89,7 @@ class CacheItemPoolTokenResourceStorageTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\Resource\CacheItemPoolTokenResourceStorage::get()
+     * @see \Ness\Component\Lockey\Storage\Resource\CacheItemPoolTokenResourceStorage::get()
      */
     public function testRemove(): void
     {
@@ -107,7 +107,7 @@ class CacheItemPoolTokenResourceStorageTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\Resource\CacheItemPoolTokenResourceStorage::get()
+     * @see \Ness\Component\Lockey\Storage\Resource\CacheItemPoolTokenResourceStorage::get()
      */
     public function testClear(): void
     {

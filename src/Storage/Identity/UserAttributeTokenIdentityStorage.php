@@ -10,7 +10,7 @@ declare(strict_types = 1);
  *
  */
  
-namespace Ness\Component\Lockery\Storage\Identity;
+namespace Ness\Component\Lockey\Storage\Identity;
 
 use Ness\Component\User\UserAwareInterface;
 use Ness\Component\User\Traits\UserAwareTrait;
@@ -35,7 +35,7 @@ class UserAttributeTokenIdentityStorage implements TokenIdentityStorageInterface
     
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Storage\Identity\TokenIdentityStorageInterface::add()
+     * @see \Ness\Component\Lockey\Storage\Identity\TokenIdentityStorageInterface::add()
      */
     public function add(string $resource, string $token): bool
     {
@@ -48,7 +48,7 @@ class UserAttributeTokenIdentityStorage implements TokenIdentityStorageInterface
 
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Storage\Identity\TokenIdentityStorageInterface::get()
+     * @see \Ness\Component\Lockey\Storage\Identity\TokenIdentityStorageInterface::get()
      */
     public function get(string $resource): ?string
     {
@@ -57,7 +57,7 @@ class UserAttributeTokenIdentityStorage implements TokenIdentityStorageInterface
 
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Storage\Identity\TokenIdentityStorageInterface::remove()
+     * @see \Ness\Component\Lockey\Storage\Identity\TokenIdentityStorageInterface::remove()
      */
     public function remove(string $resource): bool
     {
@@ -77,7 +77,7 @@ class UserAttributeTokenIdentityStorage implements TokenIdentityStorageInterface
 
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Storage\Identity\TokenIdentityStorageInterface::clear()
+     * @see \Ness\Component\Lockey\Storage\Identity\TokenIdentityStorageInterface::clear()
      */
     public function clear(): void
     {

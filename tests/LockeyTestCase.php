@@ -11,7 +11,7 @@ declare(strict_types = 1);
  *
  */
  
-namespace NessTest\Component\Lockery;
+namespace NessTest\Component\Lockey;
 
 use PHPUnit\Framework\TestCase;
 
@@ -21,7 +21,7 @@ use PHPUnit\Framework\TestCase;
  * @author CurtisBarogla <curtis_barogla@outlook.fr>
  *
  */
-abstract class LockeryTestCase extends TestCase
+abstract class LockeyTestCase extends TestCase
 {
-    
+    //
 }

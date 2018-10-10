@@ -10,12 +10,12 @@ declare(strict_types = 1);
  *
  */
  
-namespace NessTest\Component\Lockery\Formatter;
+namespace NessTest\Component\Lockey\Formatter;
 
-use NessTest\Component\Lockery\LockeryTestCase;
-use Ness\Component\Lockery\LockToken;
-use Ness\Component\Lockery\Format\JsonLockTokenFormatter;
-use Ness\Component\Lockery\Exception\FormatterException;
+use NessTest\Component\Lockey\LockeyTestCase;
+use Ness\Component\Lockey\LockToken;
+use Ness\Component\Lockey\Format\JsonLockTokenFormatter;
+use Ness\Component\Lockey\Exception\FormatterException;
 
 /**
  * JsonLockTokenFormatter testcase
@@ -25,11 +25,11 @@ use Ness\Component\Lockery\Exception\FormatterException;
  * @author CurtisBarogla <curtis_barogla@outlook.fr>
  *
  */
-class JsonLockTokenFormatterTest extends LockeryTestCase
+class JsonLockTokenFormatterTest extends LockeyTestCase
 {
     
     /**
-     * @see \Ness\Component\Lockery\Format\JsonLockTokenFormatter::normalize()
+     * @see \Ness\Component\Lockey\Format\JsonLockTokenFormatter::normalize()
      */
     public function testNormalize(): void
     {
@@ -44,7 +44,7 @@ class JsonLockTokenFormatterTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Format\JsonLockTokenFormatter::denormalize()
+     * @see \Ness\Component\Lockey\Format\JsonLockTokenFormatter::denormalize()
      */
     public function testDenormalize(): void
     {
@@ -60,7 +60,7 @@ class JsonLockTokenFormatterTest extends LockeryTestCase
                     /**_____EXCEPTIONS_____**/
     
     /**
-     * @see \Ness\Component\Lockery\Format\JsonLockTokenFormatter::denormalize()
+     * @see \Ness\Component\Lockey\Format\JsonLockTokenFormatter::denormalize()
      */
     public function testExceptionDenormalizeWhenJsonIsCorrupted(): void
     {

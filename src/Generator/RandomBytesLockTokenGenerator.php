@@ -10,10 +10,10 @@ declare(strict_types = 1);
  *
  */
  
-namespace Ness\Component\Lockery\Generator;
+namespace Ness\Component\Lockey\Generator;
 
-use Ness\Component\Lockery\LockToken;
-use Ness\Component\Lockery\LockableResourceInterface;
+use Ness\Component\Lockey\LockToken;
+use Ness\Component\Lockey\LockableResourceInterface;
 
 /**
  * Simply use random_bytes native php function to generate a random value
@@ -44,7 +44,7 @@ class RandomBytesLockTokenGenerator implements LockTokenGeneratorInterface
     
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Generator\LockTokenGeneratorInterface::generate()
+     * @see \Ness\Component\Lockey\Generator\LockTokenGeneratorInterface::generate()
      */
     public function generate(LockableResourceInterface $resource): LockToken
     {

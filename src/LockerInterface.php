@@ -10,11 +10,11 @@ declare(strict_types = 1);
  *
  */
  
-namespace Ness\Component\Lockery;
+namespace Ness\Component\Lockey;
 
-use Ness\Component\Lockery\Exception\LockErrorException;
-use Ness\Component\Lockery\Exception\UnlockErrorException;
-use Ness\Component\Lockery\Exception\InvalidArgumentException;
+use Ness\Component\Lockey\Exception\LockErrorException;
+use Ness\Component\Lockey\Exception\UnlockErrorException;
+use Ness\Component\Lockey\Exception\InvalidArgumentException;
 
 /**
  * Manage lock of resources

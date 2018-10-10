@@ -10,7 +10,7 @@ declare(strict_types = 1);
  *
  */
  
-namespace Ness\Component\Lockery\Storage\Identity;
+namespace Ness\Component\Lockey\Storage\Identity;
 
 /**
  * Simply use the native session mechanism of php to store identity token
@@ -51,7 +51,7 @@ class NativeSessionTokenIdentityStorage implements TokenIdentityStorageInterface
     
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Storage\Identity\TokenIdentityStorageInterface::get()
+     * @see \Ness\Component\Lockey\Storage\Identity\TokenIdentityStorageInterface::get()
      */
     public function get(string $resource): ?string
     {
@@ -60,7 +60,7 @@ class NativeSessionTokenIdentityStorage implements TokenIdentityStorageInterface
     
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Storage\Identity\TokenIdentityStorageInterface::add()
+     * @see \Ness\Component\Lockey\Storage\Identity\TokenIdentityStorageInterface::add()
      */
     public function add(string $resource, string $token): bool
     {
@@ -71,7 +71,7 @@ class NativeSessionTokenIdentityStorage implements TokenIdentityStorageInterface
 
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Storage\Identity\TokenIdentityStorageInterface::remove()
+     * @see \Ness\Component\Lockey\Storage\Identity\TokenIdentityStorageInterface::remove()
      */
     public function remove(string $resource): bool
     {
@@ -85,7 +85,7 @@ class NativeSessionTokenIdentityStorage implements TokenIdentityStorageInterface
 
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Storage\Identity\TokenIdentityStorageInterface::clear()
+     * @see \Ness\Component\Lockey\Storage\Identity\TokenIdentityStorageInterface::clear()
      */
     public function clear(): void
     {

@@ -10,11 +10,11 @@ declare(strict_types = 1);
  *
  */
  
-namespace NessTest\Component\Lockery\Storage\Identity;
+namespace NessTest\Component\Lockey\Storage\Identity;
 
-use NessTest\Component\Lockery\LockeryTestCase;
+use NessTest\Component\Lockey\LockeyTestCase;
 use Ness\Component\User\UserInterface;
-use Ness\Component\Lockery\Storage\Identity\UserAttributeTokenIdentityStorage;
+use Ness\Component\Lockey\Storage\Identity\UserAttributeTokenIdentityStorage;
 
 /**
  * UserAttributeTokenIdentityStorage testcase
@@ -24,7 +24,7 @@ use Ness\Component\Lockery\Storage\Identity\UserAttributeTokenIdentityStorage;
  * @author CurtisBarogla <curtis_barogla@outlook.fr>
  *
  */
-class UserAttributeTokenIdentityStorageTest extends LockeryTestCase
+class UserAttributeTokenIdentityStorageTest extends LockeyTestCase
 {
     
     /**
@@ -38,7 +38,7 @@ class UserAttributeTokenIdentityStorageTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\Identity\UserAttributeTokenIdentityStorage::add()
+     * @see \Ness\Component\Lockey\Storage\Identity\UserAttributeTokenIdentityStorage::add()
      */
     public function testAdd(): void
     {
@@ -63,7 +63,7 @@ class UserAttributeTokenIdentityStorageTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\Identity\UserAttributeTokenIdentityStorage::get()
+     * @see \Ness\Component\Lockey\Storage\Identity\UserAttributeTokenIdentityStorage::get()
      */
     public function testGet(): void
     {
@@ -82,7 +82,7 @@ class UserAttributeTokenIdentityStorageTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\Identity\UserAttributeTokenIdentityStorage::remove()
+     * @see \Ness\Component\Lockey\Storage\Identity\UserAttributeTokenIdentityStorage::remove()
      */
     public function testRemove(): void
     {
@@ -113,7 +113,7 @@ class UserAttributeTokenIdentityStorageTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\Identity\UserAttributeTokenIdentityStorage::clear()
+     * @see \Ness\Component\Lockey\Storage\Identity\UserAttributeTokenIdentityStorage::clear()
      */
     public function testClear(): void
     {

@@ -10,7 +10,7 @@ declare(strict_types = 1);
  *
  */
  
-namespace Ness\Component\Lockery;
+namespace Ness\Component\Lockey;
 
 /**
  * Used to identify a resource locked and its user assigned.

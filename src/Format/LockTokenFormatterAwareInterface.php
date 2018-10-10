@@ -10,7 +10,7 @@ declare(strict_types = 1);
  *
  */
  
-namespace Ness\Component\Lockery\Format;
+namespace Ness\Component\Lockey\Format;
 
 /**
  * Make a component aware of a LockTokenFormatter implementation

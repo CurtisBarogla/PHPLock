@@ -10,15 +10,15 @@ declare(strict_types = 1);
  *
  */
  
-namespace Ness\Component\Lockery;
+namespace Ness\Component\Lockey;
 
-use Ness\Component\Lockery\Format\LockTokenFormatterInterface;
-use Ness\Component\Lockery\Storage\LockTokenPoolInterface;
-use Ness\Component\Lockery\Format\LockTokenFormatterAwareInterface;
-use Ness\Component\Lockery\Generator\LockTokenGeneratorInterface;
-use Ness\Component\Lockery\Exception\UnlockErrorException;
-use Ness\Component\Lockery\Exception\LockErrorException;
-use Ness\Component\Lockery\Exception\InvalidArgumentException;
+use Ness\Component\Lockey\Format\LockTokenFormatterInterface;
+use Ness\Component\Lockey\Storage\LockTokenPoolInterface;
+use Ness\Component\Lockey\Format\LockTokenFormatterAwareInterface;
+use Ness\Component\Lockey\Generator\LockTokenGeneratorInterface;
+use Ness\Component\Lockey\Exception\UnlockErrorException;
+use Ness\Component\Lockey\Exception\LockErrorException;
+use Ness\Component\Lockey\Exception\InvalidArgumentException;
 
 /**
  * Basic implementation of LockerInterface
@@ -90,7 +90,7 @@ class Locker implements LockerInterface
     
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\LockerInterface::lock()
+     * @see \Ness\Component\Lockey\LockerInterface::lock()
      */
     public function lock(LockableResourceInterface $resource, \DateInterval $duration): void
     {
@@ -108,7 +108,7 @@ class Locker implements LockerInterface
 
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\LockerInterface::free()
+     * @see \Ness\Component\Lockey\LockerInterface::free()
      */
     public function free(LockableResourceInterface $resource): void
     {
@@ -117,7 +117,7 @@ class Locker implements LockerInterface
 
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\LockerInterface::bypass()
+     * @see \Ness\Component\Lockey\LockerInterface::bypass()
      */
     public function bypass(LockableResourceInterface $resource, \DateInterval $duration): void
     {
@@ -141,7 +141,7 @@ class Locker implements LockerInterface
     
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\LockerInterface::checkLocked()
+     * @see \Ness\Component\Lockey\LockerInterface::checkLocked()
      */
     public function checkLocked(LockableResourceInterface $resource): ?\DateTimeImmutable
     {

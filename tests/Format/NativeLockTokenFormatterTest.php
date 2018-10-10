@@ -10,12 +10,12 @@ declare(strict_types = 1);
  *
  */
  
-namespace NessTest\Component\Lockery\Formatter;
+namespace NessTest\Component\Lockey\Formatter;
 
-use NessTest\Component\Lockery\LockeryTestCase;
-use Ness\Component\Lockery\LockToken;
-use Ness\Component\Lockery\Format\NativeLockTokenFormatter;
-use Ness\Component\Lockery\Exception\FormatterException;
+use NessTest\Component\Lockey\LockeyTestCase;
+use Ness\Component\Lockey\LockToken;
+use Ness\Component\Lockey\Format\NativeLockTokenFormatter;
+use Ness\Component\Lockey\Exception\FormatterException;
 
 /**
  * NativeLockTokenFormatter testcase
@@ -25,11 +25,11 @@ use Ness\Component\Lockery\Exception\FormatterException;
  * @author CurtisBarogla <curtis_barogla@outlook.fr>
  *
  */
-class NativeLockTokenFormatterTest extends LockeryTestCase
+class NativeLockTokenFormatterTest extends LockeyTestCase
 {
     
     /**
-     * @see \Ness\Component\Lockery\Format\NativeLockTokenFormatter::normalize()
+     * @see \Ness\Component\Lockey\Format\NativeLockTokenFormatter::normalize()
      */
     public function testNormalize(): void
     {
@@ -40,11 +40,11 @@ class NativeLockTokenFormatterTest extends LockeryTestCase
         
         $expiration = \time() + 600;
         
-        $this->assertSame('C:32:"Ness\Component\Lockery\LockToken":63:{a:3:{i:0;s:11:"FooResource";i:1;s:6:"FooBar";i:2;i:' . $expiration . ';}}', $formatter->normalize($token));
+        $this->assertSame('C:31:"Ness\Component\Lockey\LockToken":63:{a:3:{i:0;s:11:"FooResource";i:1;s:6:"FooBar";i:2;i:' . $expiration . ';}}', $formatter->normalize($token));
     }
     
     /**
-     * @see \Ness\Component\Lockery\Format\NativeLockTokenFormatter::denormalize()
+     * @see \Ness\Component\Lockey\Format\NativeLockTokenFormatter::denormalize()
      */
     public function testDenormalize(): void
     {
@@ -61,7 +61,7 @@ class NativeLockTokenFormatterTest extends LockeryTestCase
                     /**_____EXCEPTIONS_____**/
     
     /**
-     * @see \Ness\Component\Lockery\Format\NativeLockTokenFormatter::denormalize()
+     * @see \Ness\Component\Lockey\Format\NativeLockTokenFormatter::denormalize()
      */
     public function testExceptionDenormalizeWhenStartCharsAreInvalid(): void
     {
@@ -73,7 +73,7 @@ class NativeLockTokenFormatterTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Format\NativeLockTokenFormatter::denormalize()
+     * @see \Ness\Component\Lockey\Format\NativeLockTokenFormatter::denormalize()
      */
     public function testExceptionDenormalizeWhenStartCharsAreValidButTokenIsCorrupted(): void
     {

@@ -10,7 +10,7 @@ declare(strict_types = 1);
  *
  */
  
-namespace Ness\Component\Lockery\Storage\Resource;
+namespace Ness\Component\Lockey\Storage\Resource;
 
 /**
  * Responsible to persist resource tokens

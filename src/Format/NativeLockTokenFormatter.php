@@ -10,10 +10,10 @@ declare(strict_types = 1);
  *
  */
  
-namespace Ness\Component\Lockery\Format;
+namespace Ness\Component\Lockey\Format;
 
-use Ness\Component\Lockery\LockToken;
-use Ness\Component\Lockery\Exception\FormatterException;
+use Ness\Component\Lockey\LockToken;
+use Ness\Component\Lockey\Exception\FormatterException;
 
 /**
  * Simply use serialize and unserialize functions of php as LockToken implements Serializable
@@ -26,7 +26,7 @@ class NativeLockTokenFormatter implements LockTokenFormatterInterface
     
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Format\LockTokenFormatterInterface::normalize()
+     * @see \Ness\Component\Lockey\Format\LockTokenFormatterInterface::normalize()
      */
     public function normalize(LockToken $token): string
     {
@@ -36,7 +36,7 @@ class NativeLockTokenFormatter implements LockTokenFormatterInterface
 
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Format\LockTokenFormatterInterface::denormalize()
+     * @see \Ness\Component\Lockey\Format\LockTokenFormatterInterface::denormalize()
      */
     public function denormalize(string $token): LockToken
     {

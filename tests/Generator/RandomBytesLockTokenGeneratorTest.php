@@ -10,12 +10,12 @@ declare(strict_types = 1);
  *
  */
  
-namespace NessTest\Component\Lockery\Generator;
+namespace NessTest\Component\Lockey\Generator;
 
-use NessTest\Component\Lockery\LockeryTestCase;
-use Ness\Component\Lockery\Generator\RandomBytesLockTokenGenerator;
-use Ness\Component\Lockery\LockToken;
-use Ness\Component\Lockery\LockableResourceInterface;
+use NessTest\Component\Lockey\LockeyTestCase;
+use Ness\Component\Lockey\Generator\RandomBytesLockTokenGenerator;
+use Ness\Component\Lockey\LockToken;
+use Ness\Component\Lockey\LockableResourceInterface;
 
 /**
  * RandomBytesLockTokenGenerator testcase
@@ -25,11 +25,11 @@ use Ness\Component\Lockery\LockableResourceInterface;
  * @author CurtisBarogla <curtis_barogla@outlook.fr>
  *
  */
-class RandomBytesLockTokenGeneratorTest extends LockeryTestCase
+class RandomBytesLockTokenGeneratorTest extends LockeyTestCase
 {
     
     /**
-     * @see \Ness\Component\Lockery\Generator\RandomBytesLockTokenGenerator::generate()
+     * @see \Ness\Component\Lockey\Generator\RandomBytesLockTokenGenerator::generate()
      */
     public function testGenerate(): void
     {

@@ -10,10 +10,10 @@ declare(strict_types = 1);
  *
  */
  
-namespace Ness\Component\Lockery\Format;
+namespace Ness\Component\Lockey\Format;
 
-use Ness\Component\Lockery\LockToken;
-use Ness\Component\Lockery\Exception\FormatterException;
+use Ness\Component\Lockey\LockToken;
+use Ness\Component\Lockey\Exception\FormatterException;
 
 /**
  * Responsible to normalize and denormalize lock tokens

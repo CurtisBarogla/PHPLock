@@ -10,14 +10,14 @@ declare(strict_types = 1);
  *
  */
  
-namespace Ness\Component\Lockery\Storage;
+namespace Ness\Component\Lockey\Storage;
 
-use Ness\Component\Lockery\LockToken;
-use Ness\Component\Lockery\LockableResourceInterface;
-use Ness\Component\Lockery\Format\LockTokenFormatterAwareInterface;
-use Ness\Component\Lockery\Format\LockTokenFormatterInterface;
-use Ness\Component\Lockery\Storage\Identity\TokenIdentityStorageInterface;
-use Ness\Component\Lockery\Storage\Resource\TokenResourceStorageInterface;
+use Ness\Component\Lockey\LockToken;
+use Ness\Component\Lockey\LockableResourceInterface;
+use Ness\Component\Lockey\Format\LockTokenFormatterAwareInterface;
+use Ness\Component\Lockey\Format\LockTokenFormatterInterface;
+use Ness\Component\Lockey\Storage\Identity\TokenIdentityStorageInterface;
+use Ness\Component\Lockey\Storage\Resource\TokenResourceStorageInterface;
 
 /**
  * Native implementation of LockTokenPoolInterface
@@ -66,7 +66,7 @@ class LockTokenPool implements LockTokenPoolInterface, LockTokenFormatterAwareIn
     
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Storage\LockTokenPoolInterface::addToken()
+     * @see \Ness\Component\Lockey\Storage\LockTokenPoolInterface::addToken()
      */
     public function addToken(LockToken $token): bool
     {
@@ -88,7 +88,7 @@ class LockTokenPool implements LockTokenPoolInterface, LockTokenFormatterAwareIn
 
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Storage\LockTokenPoolInterface::getToken()
+     * @see \Ness\Component\Lockey\Storage\LockTokenPoolInterface::getToken()
      */
     public function getToken(LockableResourceInterface $resource): ?array
     {
@@ -112,7 +112,7 @@ class LockTokenPool implements LockTokenPoolInterface, LockTokenFormatterAwareIn
     
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Storage\LockTokenPoolInterface::removeToken()
+     * @see \Ness\Component\Lockey\Storage\LockTokenPoolInterface::removeToken()
      */
     public function removeToken(LockableResourceInterface $resource): bool
     {
@@ -123,7 +123,7 @@ class LockTokenPool implements LockTokenPoolInterface, LockTokenFormatterAwareIn
 
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Storage\LockTokenPoolInterface::clear()
+     * @see \Ness\Component\Lockey\Storage\LockTokenPoolInterface::clear()
      */
     public function clear(): void
     {
@@ -133,7 +133,7 @@ class LockTokenPool implements LockTokenPoolInterface, LockTokenFormatterAwareIn
     
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Format\LockTokenFormatterAwareInterface::setFormatter()
+     * @see \Ness\Component\Lockey\Format\LockTokenFormatterAwareInterface::setFormatter()
      */
     public function setFormatter(LockTokenFormatterInterface $formatter): void
     {
@@ -142,7 +142,7 @@ class LockTokenPool implements LockTokenPoolInterface, LockTokenFormatterAwareIn
 
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Format\LockTokenFormatterAwareInterface::getFormatter()
+     * @see \Ness\Component\Lockey\Format\LockTokenFormatterAwareInterface::getFormatter()
      */
     public function getFormatter(): LockTokenFormatterInterface
     {

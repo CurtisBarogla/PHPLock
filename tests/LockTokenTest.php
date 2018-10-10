@@ -10,9 +10,9 @@ declare(strict_types = 1);
  *
  */
  
-namespace NessTest\Component\Lockery;
+namespace NessTest\Component\Lockey;
 
-use Ness\Component\Lockery\LockToken;
+use Ness\Component\Lockey\LockToken;
 
 /**
  * LockToken testcase
@@ -22,11 +22,11 @@ use Ness\Component\Lockery\LockToken;
  * @author CurtisBarogla <curtis_barogla@outlook.fr>
  *
  */
-class LockTokenTest extends LockeryTestCase
+class LockTokenTest extends LockeyTestCase
 {
     
     /**
-     * @see \Ness\Component\Lockery\LockToken::getResource()
+     * @see \Ness\Component\Lockey\LockToken::getResource()
      */
     public function testGetResource(): void
     {
@@ -36,7 +36,7 @@ class LockTokenTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\LockToken::getExpiration()
+     * @see \Ness\Component\Lockey\LockToken::getExpiration()
      */
     public function testGetExpiration(): void
     {
@@ -48,7 +48,7 @@ class LockTokenTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\LockToken::setExpiration()
+     * @see \Ness\Component\Lockey\LockToken::setExpiration()
      */
     public function testSetExpiration(): void
     {
@@ -58,7 +58,7 @@ class LockTokenTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\LockToken::serialize()
+     * @see \Ness\Component\Lockey\LockToken::serialize()
      */
     public function testSerialize(): void
     {
@@ -68,7 +68,7 @@ class LockTokenTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\LockToken::unserialize()
+     * @see \Ness\Component\Lockey\LockToken::unserialize()
      */
     public function testUnserialize(): void
     {
@@ -80,7 +80,7 @@ class LockTokenTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\LockToken::jsonSerialize()
+     * @see \Ness\Component\Lockey\LockToken::jsonSerialize()
      */
     public function testJsonSerialize(): void
     {
@@ -90,7 +90,7 @@ class LockTokenTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\LockToken::createLockTokenFromJson()
+     * @see \Ness\Component\Lockey\LockToken::createLockTokenFromJson()
      */
     public function testCreateLockTokenFromJson(): void
     {
@@ -104,7 +104,7 @@ class LockTokenTest extends LockeryTestCase
                     /**_____EXCEPTIONS_____**/
     
     /**
-     * @see \Ness\Component\Lockery\LockToken::createLockTokenFromJson()
+     * @see \Ness\Component\Lockey\LockToken::createLockTokenFromJson()
      */
     public function testExceptionCreateLockTokenFromJsonWhenGivenJsonIsCorrupted(): void
     {

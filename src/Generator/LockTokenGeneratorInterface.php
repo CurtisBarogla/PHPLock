@@ -10,10 +10,10 @@ declare(strict_types = 1);
  *
  */
  
-namespace Ness\Component\Lockery\Generator;
+namespace Ness\Component\Lockey\Generator;
 
-use Ness\Component\Lockery\LockableResourceInterface;
-use Ness\Component\Lockery\LockToken;
+use Ness\Component\Lockey\LockableResourceInterface;
+use Ness\Component\Lockey\LockToken;
 
 /**
  * Responsible to generate lock token

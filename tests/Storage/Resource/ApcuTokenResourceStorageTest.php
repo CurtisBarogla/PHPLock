@@ -10,10 +10,10 @@ declare(strict_types = 1);
  *
  */
  
-namespace NessTest\Component\Lockery\Storage\Resource;
+namespace NessTest\Component\Lockey\Storage\Resource;
 
-use NessTest\Component\Lockery\LockeryTestCase;
-use Ness\Component\Lockery\Storage\Resource\ApcuTokenResourceStorage;
+use NessTest\Component\Lockey\LockeyTestCase;
+use Ness\Component\Lockey\Storage\Resource\ApcuTokenResourceStorage;
 
 /**
  * ApcuTokenResourceStorage testcase
@@ -23,7 +23,7 @@ use Ness\Component\Lockery\Storage\Resource\ApcuTokenResourceStorage;
  * @author CurtisBarogla <curtis_barogla@outlook.fr>
  *
  */
-class ApcuTokenResourceStorageTest extends LockeryTestCase
+class ApcuTokenResourceStorageTest extends LockeyTestCase
 {
 
     /**
@@ -46,7 +46,7 @@ class ApcuTokenResourceStorageTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\Resource\ApcuTokenResourceStorage::get()
+     * @see \Ness\Component\Lockey\Storage\Resource\ApcuTokenResourceStorage::get()
      */
     public function testGet(): void
     {
@@ -59,7 +59,7 @@ class ApcuTokenResourceStorageTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\Resource\ApcuTokenResourceStorage::add()
+     * @see \Ness\Component\Lockey\Storage\Resource\ApcuTokenResourceStorage::add()
      */
     public function testAdd(): void
     {
@@ -71,7 +71,7 @@ class ApcuTokenResourceStorageTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\Resource\ApcuTokenResourceStorage::remove()
+     * @see \Ness\Component\Lockey\Storage\Resource\ApcuTokenResourceStorage::remove()
      */
     public function testRemove(): void
     {
@@ -84,7 +84,7 @@ class ApcuTokenResourceStorageTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\Resource\ApcuTokenResourceStorage::clear()
+     * @see \Ness\Component\Lockey\Storage\Resource\ApcuTokenResourceStorage::clear()
      */
     public function testClear(): void
     {

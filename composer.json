@@ -1,6 +1,6 @@
 {
-	"name" : "ness/lockery",
-	"description" : "Lockery Component - Ness",
+	"name" : "ness/lockey",
+	"description" : "Lockey Component - Ness",
 	"type" : "library",
 	"authors" : [{
 			"name" : "CurtisBarogla",
@@ -12,12 +12,12 @@
 	"license" : "MIT",
 	"autoload" : {
 		"psr-4" : {
-			"Ness\\Component\\Lockery\\" : "src"
+			"Ness\\Component\\Lockey\\" : "src"
 		}
 	},
 	"autoload-dev" : {
 		"psr-4" : {
-			"NessTest\\Component\\Lockery\\" : "tests"
+			"NessTest\\Component\\Lockey\\" : "tests"
 		}
 	},
 	"keywords" : [
@@ -35,6 +35,6 @@
 		"ness/cache" : "To use cache mechanism as a lock token resource store",
 		"ness/user" : "To store lock token identity into user identity"
 	},
-	"homepage" : "https://github.com/CurtisBarogla/Lockery",
+	"homepage" : "https://github.com/CurtisBarogla/Lockey",
 	"minimum-stability" : "stable"
 }

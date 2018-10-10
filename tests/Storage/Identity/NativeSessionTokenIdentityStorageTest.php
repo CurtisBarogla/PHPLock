@@ -10,7 +10,7 @@ declare(strict_types = 1);
  *
  */
 
-namespace Ness\Component\Lockery\Storage\Identity {
+namespace Ness\Component\Lockey\Storage\Identity {
         
     $started = null;
     
@@ -41,11 +41,11 @@ namespace Ness\Component\Lockery\Storage\Identity {
     }
 };
 
-namespace NessTest\Component\Lockery\Storage\Identity {
+namespace NessTest\Component\Lockey\Storage\Identity {
 
-    use NessTest\Component\Lockery\LockeryTestCase;
-    use Ness\Component\Lockery\Storage\Identity\NativeSessionTokenIdentityStorage;
-use function Ness\Component\Lockery\Storage\Identity\initGlobals;
+    use NessTest\Component\Lockey\LockeyTestCase;
+    use Ness\Component\Lockey\Storage\Identity\NativeSessionTokenIdentityStorage;
+    use function Ness\Component\Lockey\Storage\Identity\initGlobals;
                                     
     /**
      * NativeSessionTokenIdentityStorage testcase
@@ -55,11 +55,11 @@ use function Ness\Component\Lockery\Storage\Identity\initGlobals;
      * @author CurtisBarogla <curtis_barogla@outlook.fr>
      *
      */
-    class NativeSessionTokenIdentityStoragetTest extends LockeryTestCase
+    class NativeSessionTokenIdentityStoragetTest extends LockeyTestCase
     {
         
         /**
-         * @see \Ness\Component\Lockery\Storage\Identity\NativeSessionTokenIdentityStorage::get()
+         * @see \Ness\Component\Lockey\Storage\Identity\NativeSessionTokenIdentityStorage::get()
          */
         public function testGet(): void
         {
@@ -73,7 +73,7 @@ use function Ness\Component\Lockery\Storage\Identity\initGlobals;
         }
         
         /**
-         * @see \Ness\Component\Lockery\Storage\Identity\NativeSessionTokenIdentityStorage::add()
+         * @see \Ness\Component\Lockey\Storage\Identity\NativeSessionTokenIdentityStorage::add()
          */
         public function testAdd(): void
         {
@@ -85,7 +85,7 @@ use function Ness\Component\Lockery\Storage\Identity\initGlobals;
         }
         
         /**
-         * @see \Ness\Component\Lockery\Storage\Identity\NativeSessionTokenIdentityStorage::remove()
+         * @see \Ness\Component\Lockey\Storage\Identity\NativeSessionTokenIdentityStorage::remove()
          */
         public function testRemove(): void
         {
@@ -102,7 +102,7 @@ use function Ness\Component\Lockery\Storage\Identity\initGlobals;
         }
         
         /**
-         * @see \Ness\Component\Lockery\Storage\Identity\NativeSessionTokenIdentityStorage::clear()
+         * @see \Ness\Component\Lockey\Storage\Identity\NativeSessionTokenIdentityStorage::clear()
          */
         public function testClear(): void
         {
@@ -121,10 +121,10 @@ use function Ness\Component\Lockery\Storage\Identity\initGlobals;
             $this->assertNull($store->get("BarResource"));
         }
         
-        /**_____EXCEPTIONS_____**/
+                        /**_____EXCEPTIONS_____**/
         
         /**
-         * @see \Ness\Component\Lockery\Storage\Identity\NativeSessionTokenIdentityStorage::__construct()
+         * @see \Ness\Component\Lockey\Storage\Identity\NativeSessionTokenIdentityStorage::__construct()
          */
         public function testException__constructWhenSessionIsNotActive(): void
         {

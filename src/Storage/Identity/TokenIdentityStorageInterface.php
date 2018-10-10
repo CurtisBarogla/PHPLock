@@ -10,7 +10,7 @@ declare(strict_types = 1);
  *
  */
  
-namespace Ness\Component\Lockery\Storage\Identity;
+namespace Ness\Component\Lockey\Storage\Identity;
 
 /**
  * Responsible to store an identity token to identify a user when a resource is locked

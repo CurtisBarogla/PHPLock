@@ -10,7 +10,7 @@ declare(strict_types = 1);
  *
  */
  
-namespace Ness\Component\Lockery\Storage\Resource;
+namespace Ness\Component\Lockey\Storage\Resource;
 
 use Psr\Cache\CacheItemPoolInterface;
 use Cache\TagInterop\TaggableCacheItemInterface;
@@ -61,7 +61,7 @@ class CacheItemPoolTokenResourceStorage implements TokenResourceStorageInterface
     
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Storage\Resource\TokenResourceStorageInterface::get()
+     * @see \Ness\Component\Lockey\Storage\Resource\TokenResourceStorageInterface::get()
      */
     public function get(string $resource): ?string
     {
@@ -70,7 +70,7 @@ class CacheItemPoolTokenResourceStorage implements TokenResourceStorageInterface
     
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Storage\Resource\TokenResourceStorageInterface::add()
+     * @see \Ness\Component\Lockey\Storage\Resource\TokenResourceStorageInterface::add()
      */
     public function add(string $resource, string $token, int $validitity): bool
     {
@@ -83,7 +83,7 @@ class CacheItemPoolTokenResourceStorage implements TokenResourceStorageInterface
 
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Storage\Resource\TokenResourceStorageInterface::remove()
+     * @see \Ness\Component\Lockey\Storage\Resource\TokenResourceStorageInterface::remove()
      */
     public function remove(string $resource): bool
     {
@@ -92,7 +92,7 @@ class CacheItemPoolTokenResourceStorage implements TokenResourceStorageInterface
     
     /**
      * {@inheritDoc}
-     * @see \Ness\Component\Lockery\Storage\Resource\TokenResourceStorageInterface::clear()
+     * @see \Ness\Component\Lockey\Storage\Resource\TokenResourceStorageInterface::clear()
      */
     public function clear(): void
     {

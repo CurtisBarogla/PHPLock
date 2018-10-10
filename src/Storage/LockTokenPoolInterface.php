@@ -10,10 +10,10 @@ declare(strict_types = 1);
  *
  */
  
-namespace Ness\Component\Lockery\Storage;
+namespace Ness\Component\Lockey\Storage;
 
-use Ness\Component\Lockery\LockToken;
-use Ness\Component\Lockery\LockableResourceInterface;
+use Ness\Component\Lockey\LockToken;
+use Ness\Component\Lockey\LockableResourceInterface;
 
 /**
  * Provide a way to interact with lock token

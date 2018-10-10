@@ -10,11 +10,11 @@ declare(strict_types = 1);
  *
  */
  
-namespace NessTest\Component\Lockery\Storage\Resource;
+namespace NessTest\Component\Lockey\Storage\Resource;
 
-use NessTest\Component\Lockery\LockeryTestCase;
+use NessTest\Component\Lockey\LockeyTestCase;
 use Psr\SimpleCache\CacheInterface;
-use Ness\Component\Lockery\Storage\Resource\CacheTokenResourceStorage;
+use Ness\Component\Lockey\Storage\Resource\CacheTokenResourceStorage;
 
 /**
  * CacheTokenResourceStorage testcase
@@ -24,7 +24,7 @@ use Ness\Component\Lockery\Storage\Resource\CacheTokenResourceStorage;
  * @author CurtisBarogla <curtis_barogla@outlook.fr>
  *
  */
-class CacheTokenResourceStorageTest extends LockeryTestCase
+class CacheTokenResourceStorageTest extends LockeyTestCase
 {
     
     /**
@@ -38,7 +38,7 @@ class CacheTokenResourceStorageTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\Resource\CacheTokenResourceStorage::get()
+     * @see \Ness\Component\Lockey\Storage\Resource\CacheTokenResourceStorage::get()
      */
     public function testGet(): void
     {
@@ -56,7 +56,7 @@ class CacheTokenResourceStorageTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\Resource\CacheTokenResourceStorage::add()
+     * @see \Ness\Component\Lockey\Storage\Resource\CacheTokenResourceStorage::add()
      */
     public function testAdd(): void
     {
@@ -69,7 +69,7 @@ class CacheTokenResourceStorageTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\Resource\CacheTokenResourceStorage::remove()
+     * @see \Ness\Component\Lockey\Storage\Resource\CacheTokenResourceStorage::remove()
      */
     public function testRemove(): void
     {
@@ -87,7 +87,7 @@ class CacheTokenResourceStorageTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\Resource\CacheTokenResourceStorage::clear()
+     * @see \Ness\Component\Lockey\Storage\Resource\CacheTokenResourceStorage::clear()
      */
     public function testClear(): void
     {

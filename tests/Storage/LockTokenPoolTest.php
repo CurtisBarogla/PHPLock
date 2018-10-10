@@ -10,16 +10,16 @@ declare(strict_types = 1);
  *
  */
  
-namespace NessTest\Component\Lockery\Storage;
+namespace NessTest\Component\Lockey\Storage;
 
-use NessTest\Component\Lockery\LockeryTestCase;
-use Ness\Component\Lockery\Storage\LockTokenPool;
-use Ness\Component\Lockery\Storage\Identity\TokenIdentityStorageInterface;
-use Ness\Component\Lockery\Storage\Resource\TokenResourceStorageInterface;
-use Ness\Component\Lockery\Format\LockTokenFormatterInterface;
+use NessTest\Component\Lockey\LockeyTestCase;
+use Ness\Component\Lockey\Storage\LockTokenPool;
+use Ness\Component\Lockey\Storage\Identity\TokenIdentityStorageInterface;
+use Ness\Component\Lockey\Storage\Resource\TokenResourceStorageInterface;
+use Ness\Component\Lockey\Format\LockTokenFormatterInterface;
 use PHPUnit\Framework\MockObject\MockObject;
-use Ness\Component\Lockery\LockableResourceInterface;
-use Ness\Component\Lockery\LockToken;
+use Ness\Component\Lockey\LockableResourceInterface;
+use Ness\Component\Lockey\LockToken;
 
 /**
  * LockTokenPool testcase
@@ -29,11 +29,11 @@ use Ness\Component\Lockery\LockToken;
  * @author CurtisBarogla <curtis_barogla@outlook.fr>
  *
  */
-class LockTokenPoolTest extends LockeryTestCase
+class LockTokenPoolTest extends LockeyTestCase
 {
     
     /**
-     * @see \Ness\Component\Lockery\Storage\LockTokenPool::addToken()
+     * @see \Ness\Component\Lockey\Storage\LockTokenPool::addToken()
      */
     public function testAddToken(): void
     {
@@ -55,7 +55,7 @@ class LockTokenPoolTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\LockTokenPool::getToken()
+     * @see \Ness\Component\Lockey\Storage\LockTokenPool::getToken()
      */
     public function testGetToken(): void
     {
@@ -96,7 +96,7 @@ class LockTokenPoolTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\LockTokenPool::removeToken()
+     * @see \Ness\Component\Lockey\Storage\LockTokenPool::removeToken()
      */
     public function testRemoveToken(): void
     {
@@ -124,7 +124,7 @@ class LockTokenPoolTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\LockTokenPool::clear()
+     * @see \Ness\Component\Lockey\Storage\LockTokenPool::clear()
      */
     public function testClear(): void
     {
@@ -139,7 +139,7 @@ class LockTokenPoolTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\LockTokenPool::setFormatter()
+     * @see \Ness\Component\Lockey\Storage\LockTokenPool::setFormatter()
      */
     public function testSetFormatter(): void
     {
@@ -153,7 +153,7 @@ class LockTokenPoolTest extends LockeryTestCase
     }
     
     /**
-     * @see \Ness\Component\Lockery\Storage\LockTokenPool::getFormatter()
+     * @see \Ness\Component\Lockey\Storage\LockTokenPool::getFormatter()
      */
     public function testGetFormatter(): void
     {
