@@ -224,6 +224,94 @@ class LockerTest extends LockeryTestCase
     }
     
     /**
+     * @see \Ness\Component\Lockery\Locker::bypass()
+     */
+    public function testExceptionBypassWithNoPreviousTokenToRestoreWhenTokenResourceCannotBeLocked(): void
+    {
+        $this->expectException(LockErrorException::class);
+        $this->expectExceptionMessage("An error happen when trying to bypass current lock on resource 'FooResource'. No previous lock token has been found though.");
+        
+        $resource = $this->getMockBuilder(LockableResourceInterface::class)->getMock();
+        $resource->expects($this->exactly(4))->method("getLockableResourceName")->will($this->returnValue("FooResource"));
+        
+        $token = new LockToken("FooResource", "FooBar");
+        
+        $action = function(MockObject $pool, MockObject $generator, MockObject $formatter) use ($resource, $token): void {
+            $pool
+                ->expects($this->exactly(2))
+                ->method("getToken")
+                ->withConsecutive([$resource])
+                ->will($this->onConsecutiveCalls(null));
+            $generator->expects($this->once())->method("generate")->with($resource)->will($this->returnValue($token));
+            $pool->expects($this->once())->method("addToken")->with($token)->will($this->returnValue(false));
+        };
+        
+        $locker = $this->getLocker($action);
+        
+        $locker->bypass($resource, new \DateInterval("PT20M"));
+    }
+    
+    /**
+     * @see \Ness\Component\Lockery\Locker::bypass()
+     */
+    public function testExceptionBypassWithPreviousTokenToRestoreWhenTokenResourceCannotBeLockedWhenOldTokenIsStoredWithSuccess(): void
+    {
+        $this->expectException(LockErrorException::class);
+        $this->expectExceptionMessage("An error happen when trying to bypass current lock on resource 'FooResource'. The previous lock token has been restored with success.");
+        
+        $resource = $this->getMockBuilder(LockableResourceInterface::class)->getMock();
+        $resource->expects($this->exactly(4))->method("getLockableResourceName")->will($this->returnValue("FooResource"));
+        
+        $token = new LockToken("FooResource", "FooBar");
+        $oldToken = new LockToken("FooResource", "BarFoo");
+        
+        $action = function(MockObject $pool, MockObject $generator, MockObject $formatter) use ($resource, $token, $oldToken): void {
+            $pool
+                ->expects($this->exactly(2))
+                ->method("getToken")
+                ->withConsecutive([$resource])
+                ->will($this->onConsecutiveCalls([$oldToken, $oldToken], null));
+            $generator->expects($this->once())->method("generate")->with($resource)->will($this->returnValue($token));
+            $pool->expects($this->once())->method("removeToken")->with($resource)->will($this->returnValue(true));
+            $pool->expects($this->exactly(2))->method("addToken")->withConsecutive([$token], [$oldToken])->will($this->onConsecutiveCalls(false, true));
+        };
+        
+        $locker = $this->getLocker($action);
+        
+        $locker->bypass($resource, new \DateInterval("PT20M"));
+    }
+    
+    /**
+     * @see \Ness\Component\Lockery\Locker::bypass()
+     */
+    public function testExceptionBypassWithPreviousTokenToRestoreWhenTokenResourceCannotBeLockedWhenOldTokenCannotBeStored(): void
+    {
+        $this->expectException(LockErrorException::class);
+        $this->expectExceptionMessage("Bypassing on resource 'FooResource' failed and the current lock token cannot be restored as LockTokenPool was not able to restore it.");
+        
+        $resource = $this->getMockBuilder(LockableResourceInterface::class)->getMock();
+        $resource->expects($this->exactly(4))->method("getLockableResourceName")->will($this->returnValue("FooResource"));
+        
+        $token = new LockToken("FooResource", "FooBar");
+        $oldToken = new LockToken("FooResource", "BarFoo");
+        
+        $action = function(MockObject $pool, MockObject $generator, MockObject $formatter) use ($resource, $token, $oldToken): void {
+            $pool
+                ->expects($this->exactly(2))
+                ->method("getToken")
+                ->withConsecutive([$resource])
+                ->will($this->onConsecutiveCalls([$oldToken, $oldToken], null));
+            $generator->expects($this->once())->method("generate")->with($resource)->will($this->returnValue($token));
+            $pool->expects($this->once())->method("removeToken")->with($resource)->will($this->returnValue(true));
+            $pool->expects($this->exactly(2))->method("addToken")->withConsecutive([$token], [$oldToken])->will($this->onConsecutiveCalls(false, false));
+        };
+        
+        $locker = $this->getLocker($action);
+        
+        $locker->bypass($resource, new \DateInterval("PT20M"));
+    }
+    
+    /**
      * @see \Ness\Component\Lockery\Locker::checkLocked()
      */
     public function testExceptionWhenResourceNameIsTooLong(): void

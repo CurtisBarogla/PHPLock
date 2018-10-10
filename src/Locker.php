@@ -96,7 +96,7 @@ class Locker implements LockerInterface
     {
         $this->validateResource($resource->getLockableResourceName());
         
-        if(null !== $this->tokenPool->getToken($resource))
+        if(null !== $tokens = $this->tokenPool->getToken($resource))
             return;
         
         $token = $this->generator->generate($resource);
@@ -121,8 +121,22 @@ class Locker implements LockerInterface
      */
     public function bypass(LockableResourceInterface $resource, \DateInterval $duration): void
     {
-        $this->delete(false, $resource);
-        $this->lock($resource, $duration);
+        try {
+            $save = null;
+            $this->delete(false, $resource, $save);
+            $this->lock($resource, $duration);            
+        } catch (LockErrorException $e) {
+            if(null === $save)
+                // no token to restore, resource we free
+                throw new LockErrorException("An error happen when trying to bypass current lock on resource '{$resource->getLockableResourceName()}'. No previous lock token has been found though.");
+            // if delete fails, it fails, not the end of the world... but
+            // try to restore the old token to keep it valid minimizing the catastrophe
+            if(false === $this->tokenPool->addToken($save))
+                // no hope left...
+                throw new LockErrorException("Bypassing on resource '{$resource->getLockableResourceName()}' failed and the current lock token cannot be restored as LockTokenPool was not able to restore it.");
+            
+            throw new LockErrorException("An error happen when trying to bypass current lock on resource '{$resource->getLockableResourceName()}'. The previous lock token has been restored with success.");
+        }
     }
     
     /**
@@ -148,17 +162,21 @@ class Locker implements LockerInterface
      *   If comparaison must be performed on lock tokens provided by the pool
      * @param LockableResourceInterface $resource
      *   Resource which the token must be removed
+     * @param LockToken& $token
+     *   Trace of the deleted token
      * 
      * @throws UnlockErrorException
      *   When a error when trying to remove the lock token or when the given tokens are not same
      */
-    private function delete(bool $tokenComparaison, LockableResourceInterface $resource): void
+    private function delete(bool $tokenComparaison, LockableResourceInterface $resource, ?LockToken& $token = null): void
     {
         $this->validateResource($resource->getLockableResourceName());
         
         if(null === $tokens = $this->tokenPool->getToken($resource))
             return;
-            
+        
+        $token = $tokens[self::RESOURCE_TOKEN];
+
         if($tokenComparaison)
             if($tokens[self::IDENTITY_TOKEN] != $tokens[self::RESOURCE_TOKEN])
                 throw new UnlockErrorException("Lock Token assigned has been expired for resource '{$resource->getLockableResourceName()}'");
