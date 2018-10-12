@@ -26,14 +26,14 @@
 		"integrity"
 	],
 	"require" : {
-		"php" : ">= 7.1"
+		"php" : ">= 7.1",
+		"ness/user" : "~2.0"
 	},
 	"suggest" : {
 		"psr/simple-cache-implementation" : "A library providing PSR-16",
 		"psr/cache-implementation" : "A library providing PSR-6",
 		"cache/tag-interop" : "A cache library supporting tagging",
-		"ness/cache" : "To use cache mechanism as a lock token resource store",
-		"ness/user" : "To store lock token identity into user identity"
+		"ness/cache" : "To use cache mechanism as a lock token resource store"
 	},
 	"homepage" : "https://github.com/CurtisBarogla/Lockey",
 	"minimum-stability" : "stable"
