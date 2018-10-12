@@ -196,8 +196,10 @@ class Locker implements LockerInterface
      */
     private function validateResource(string $resource): void
     {
-        if(0 === \preg_match("#^[A-Za-z0-9_.-]+$#", $resource) || \strlen($resource) > 31)
-            throw new InvalidArgumentException("This resource name '{$resource}' is invalid !");
+        if( ($tooLong = \strlen($resource) > 31) || 0 === \preg_match("#^[A-Za-z0-9_.-]+$#", $resource))
+            throw new InvalidArgumentException(\sprintf("This resource name '%s' is invalid ! %s",
+                $resource,
+                ($tooLong) ? "Resource name MUST not be greater than 31 characters" : "Resource name MUST respect [A-Za-z0-9_.-] pattern"));
     }
 
 }

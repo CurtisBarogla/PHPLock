@@ -318,7 +318,7 @@ class LockerTest extends LockeyTestCase
     public function testExceptionWhenResourceNameIsTooLong(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage("This resource name 'HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH' is invalid !");
+        $this->expectExceptionMessage("This resource name 'HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH' is invalid ! Resource name MUST not be greater than 31 characters");
         
         $resource = $this->getMockBuilder(LockableResourceInterface::class)->getMock();
         $resource->expects($this->once())->method("getLockableResourceName")->will($this->returnValue(\str_repeat('H', 32)));
@@ -334,7 +334,7 @@ class LockerTest extends LockeyTestCase
     public function testExceptionWhenResourceContainsInvalidCharacters(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage("This resource name 'FooResource@' is invalid !");
+        $this->expectExceptionMessage("This resource name 'FooResource@' is invalid ! Resource name MUST respect [A-Za-z0-9_.-] pattern");
         
         $resource = $this->getMockBuilder(LockableResourceInterface::class)->getMock();
         $resource->expects($this->once())->method("getLockableResourceName")->will($this->returnValue("FooResource@"));
