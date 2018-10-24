@@ -23,7 +23,10 @@
 	"keywords" : [
 		"resource",
 		"lock",
-		"integrity"
+		"integrity",
+		"share",
+		"exclusive",
+		"user"
 	],
 	"require" : {
 		"php" : ">= 7.1",
