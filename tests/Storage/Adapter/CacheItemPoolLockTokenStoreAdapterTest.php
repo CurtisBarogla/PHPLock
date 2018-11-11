@@ -66,7 +66,7 @@ class CacheItemPoolLockTokenStoreAdapterTest extends LockeyTestCase
         
         $action = function(MockObject $pool) use ($item): void {
             $pool->expects($this->exactly(2))->method("getItem")->with("FooResource")->will($this->returnValue($item));
-            $pool->expects($this->exactly(2))->method("save")->with($item)->will($this->onConsecutiveCalls(true, false));
+            $pool->expects($this->exactly(2))->method("saveDeferred")->with($item)->will($this->onConsecutiveCalls(true, false));
         };
         
         $adapter = $this->getAdapter($action);

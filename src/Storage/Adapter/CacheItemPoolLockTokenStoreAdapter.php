@@ -56,7 +56,7 @@ class CacheItemPoolLockTokenStoreAdapter implements LockTokenStoreAdapterInterfa
      */
     public function add(string $resource, string $token, int $duration): bool
     {
-        return $this->pool->save($this->pool->getItem($resource)->set($token)->expiresAfter($duration));
+        return $this->pool->saveDeferred($this->pool->getItem($resource)->set($token)->expiresAfter($duration));
     }
 
     /**
