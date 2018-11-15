@@ -17,6 +17,7 @@ use Ness\Component\Lockey\LockableResourceInterface;
 use Ness\Component\Lockey\Storage\Adapter\LockTokenStoreAdapterInterface;
 use Ness\Component\Lockey\Exception\TokenPoolTransactionErrorException;
 use Ness\Component\Lockey\Normalizer\ResourceNormalizerInterface;
+use Ness\Component\Lockey\Iterator\HierarchyRecursiveIterator;
 
 /**
  * Native implementation of LockTokeInterface
@@ -80,8 +81,11 @@ class LockTokenPool implements LockTokenPoolInterface
         if(null !== $token = $this->adapter->get($this->namespace($this->normalizer->normalize($resource->getLockableName()))))
             return LockToken::createFromJson($token);
         
-        foreach ($resource->getLockableHierarchy() ?? [] as $resource) {
-            if(null !== $token = $this->adapter->get($this->namespace($this->normalizer->normalize($resource))))
+        if(null == $resource->getLockableHierarchy())
+            return null;
+            
+        foreach (new \RecursiveIteratorIterator(new HierarchyRecursiveIterator($resource), \RecursiveIteratorIterator::SELF_FIRST) as $resourceName => $resource) {
+            if(null !== $token = $this->adapter->get($this->namespace($this->normalizer->normalize($resourceName))))
                 return LockToken::createFromJson($token);
         }
         
@@ -111,7 +115,7 @@ class LockTokenPool implements LockTokenPoolInterface
             
         $this->addToTransaction($name, $restoration);
         
-        return $this->handleHierarchy($hierarchy, function(string $key, string $normalized) use ($token): bool {
+        return $this->handleHierarchy($this->extractHierarchy($resource), function(string $key, string $normalized) use ($token): bool {
             return $this->adapter->add(
                 $normalized, 
                 \json_encode(LockToken::copy($key, $token)), 
@@ -139,7 +143,7 @@ class LockTokenPool implements LockTokenPoolInterface
             return $this->adapter->add($key, \json_encode($token), $token->getValidity()->getTimestamp() - \time());
         });
         
-        return $this->handleHierarchy($hierarchy, function(string $key, string $normalized): bool {
+        return $this->handleHierarchy($this->extractHierarchy($resource), function(string $key, string $normalized): bool {
             return $this->adapter->remove($normalized); 
         }, function(string $key): bool {
             $token = LockToken::createFromJson($this->adapter->get($key));
@@ -185,6 +189,25 @@ class LockTokenPool implements LockTokenPoolInterface
         $this->transaction = null;
         
         return true;
+    }
+    
+    /**
+     * Extract all resource names for a hierarchical resource
+     * 
+     * @param LockableResourceInterface $resource
+     *   Resource which to extract the hierarchy
+     * 
+     * @return string[]
+     *   All resource names associated to the given resource
+     */
+    private function extractHierarchy(LockableResourceInterface $resource): array
+    {
+        $resources = [];
+        foreach (new \RecursiveIteratorIterator(new HierarchyRecursiveIterator($resource), \RecursiveIteratorIterator::SELF_FIRST) as $name => $resource) {
+            $resources[] = $name; 
+        }
+
+        return \array_unique($resources);
     }
     
     /**

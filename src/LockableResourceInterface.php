@@ -33,7 +33,7 @@ interface LockableResourceInterface
      * Get the lockable hierarchy assigned to this resource.
      * All resources declared here will be locked/freed when action on the main one occured
      * 
-     * @return array|null
+     * @return LockableResourceInterface[]|null
      *   A list of side resources to lock/free or null if no hierarchy at all
      */
     public function getLockableHierarchy(): ?array;

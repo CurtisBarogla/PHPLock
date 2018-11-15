@@ -15,6 +15,7 @@ namespace Ness\Component\Lockey\Storage;
 use Ness\Component\Lockey\LockToken;
 use Ness\Component\Lockey\LockableResourceInterface;
 use Ness\Component\Lockey\Exception\TokenPoolTransactionErrorException;
+use Ness\Component\Lockey\Exception\InvalidArgumentException;
 
 /**
  * Responsible to load and save lock token on a resource respecting its hierarchy
@@ -40,8 +41,10 @@ interface LockTokenPoolInterface
      * @return LockToken|null
      *   A lock token attribute to the given resource or attribute to a hierarchical one or null if not found
      *   
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      *   When given resource name does not comply required pattern
+     * @throws InvalidArgumentException
+     *   When a hierarchy has been declared and a member is not a LockableResourceInterface compliant component
      */
     public function getToken(LockableResourceInterface $resource): ?LockToken;
     
@@ -58,8 +61,10 @@ interface LockTokenPoolInterface
      *   
      * @throws TokenPoolTransactionErrorException
      *   When an error happen when restoring the pool in case of error
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      *   When given resource name does not comply required pattern
+     * @throws InvalidArgumentException
+     *   When a hierarchy has been declared and a member is not a LockableResourceInterface compliant component
      */
     public function saveToken(LockToken $token, LockableResourceInterface $resource): bool;
     
@@ -76,8 +81,10 @@ interface LockTokenPoolInterface
      *   
      * @throws TokenPoolTransactionErrorException
      *   When an error happen when restoring the pool in case of error
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      *   When given resource name does not comply required pattern
+     * @throws InvalidArgumentException
+     *   When a hierarchy has been declared and a member is not a LockableResourceInterface compliant component
      */
     public function deleteToken(LockableResourceInterface $resource): bool;
     

@@ -57,7 +57,10 @@ class LockTokenPoolTest extends LockeyTestCase
     {
         $resource = $this->getMockBuilder(LockableResourceInterface::class)->getMock();
         $resource->expects($this->once())->method("getLockableName")->will($this->returnValue("FooResource"));
-        $resource->expects($this->once())->method("getLockableHierarchy")->will($this->returnValue(["BarResource", "MozResource"]));
+        $resource->expects($this->any())->method("getLockableHierarchy")->will($this->returnValue([
+            self::initializeResource("BarResource"), 
+            self::initializeResource("MozResource")]));
+        
         $action = function(MockObject $adapter, MockObject $normalizer): void {
             $normalizer
                 ->expects($this->exactly(3))
@@ -114,7 +117,10 @@ class LockTokenPoolTest extends LockeyTestCase
         $token = LockToken::createFromJson(\json_encode($token));
         $resource = $this->getMockBuilder(LockableResourceInterface::class)->getMock();
         $resource->expects($this->once())->method("getLockableName")->will($this->returnValue("FooResource"));
-        $resource->expects($this->once())->method("getLockableHierarchy")->will($this->returnValue(["BarResource", "MozResource", "PozResource"]));
+        $resource->expects($this->any())->method("getLockableHierarchy")->will($this->returnValue([
+            self::initializeResource("BarResource"), 
+            self::initializeResource("MozResource"), 
+            self::initializeResource("PozResource")]));
         
         $action = function(MockObject $adapter, MockObject $normalizer) use ($token): void {
             $normalizer
@@ -178,7 +184,9 @@ class LockTokenPoolTest extends LockeyTestCase
         
         $resource = $this->getMockBuilder(LockableResourceInterface::class)->getMock();
         $resource->expects($this->once())->method("getLockableName")->will($this->returnValue("FooResource"));
-        $resource->expects($this->once())->method("getLockableHierarchy")->will($this->returnValue(["BarResource", "MozResource"]));
+        $resource->expects($this->any())->method("getLockableHierarchy")->will($this->returnValue([
+            self::initializeResource("BarResource"), 
+            self::initializeResource("MozResource")]));
         
         $action = function(MockObject $adapter, MockObject $normalizer) use ($tokenFoo, $tokenBar, $tokenMoz): void {
             $normalizer
@@ -219,7 +227,9 @@ class LockTokenPoolTest extends LockeyTestCase
             
         $resource = $this->getMockBuilder(LockableResourceInterface::class)->getMock();
         $resource->expects($this->once())->method("getLockableName")->will($this->returnValue("FooResource"));
-        $resource->expects($this->once())->method("getLockableHierarchy")->will($this->returnValue(["BarResource", "MozResource"]));
+        $resource->expects($this->any())->method("getLockableHierarchy")->will($this->returnValue([
+            self::initializeResource("BarResource"), 
+            self::initializeResource("MozResource")]));
         
         $action = function(MockObject $adapter, MockObject $normalizer) use ($tokenFoo, $tokenBar, $tokenMoz): void {
             $previousToken = new LockToken("BarResource", LockToken::EXCLUSIVE);
@@ -277,7 +287,9 @@ class LockTokenPoolTest extends LockeyTestCase
             
         $resource = $this->getMockBuilder(LockableResourceInterface::class)->getMock();
         $resource->expects($this->once())->method("getLockableName")->will($this->returnValue("FooResource"));
-        $resource->expects($this->once())->method("getLockableHierarchy")->will($this->returnValue(["BarResource", "MozResource"]));
+        $resource->expects($this->any())->method("getLockableHierarchy")->will($this->returnValue([
+            self::initializeResource("BarResource"),
+            self::initializeResource("MozResource")]));
         
         $action = function(MockObject $adapter, MockObject $normalizer) use ($tokenFoo, $tokenBar, $tokenMoz): void {
             $normalizer
@@ -366,7 +378,9 @@ class LockTokenPoolTest extends LockeyTestCase
         
         $resource = $this->getMockBuilder(LockableResourceInterface::class)->getMock();
         $resource->expects($this->once())->method("getLockableName")->will($this->returnValue("FooResource"));
-        $resource->expects($this->once())->method("getLockableHierarchy")->will($this->returnValue(["BarResource", "MozResource"]));
+        $resource->expects($this->any())->method("getLockableHierarchy")->will($this->returnValue([
+            self::initializeResource("BarResource"),
+            self::initializeResource("MozResource")]));
         
         $action = function(MockObject $adapter, MockObject $normalizer) use ($json): void {
             $normalizer
@@ -417,7 +431,9 @@ class LockTokenPoolTest extends LockeyTestCase
         
         $resource = $this->getMockBuilder(LockableResourceInterface::class)->getMock();
         $resource->expects($this->once())->method("getLockableName")->will($this->returnValue("FooResource"));
-        $resource->expects($this->once())->method("getLockableHierarchy")->will($this->returnValue(["BarResource", "MozResource"]));
+        $resource->expects($this->any())->method("getLockableHierarchy")->will($this->returnValue([
+            self::initializeResource("BarResource"),
+            self::initializeResource("MozResource")]));
         
         $action = function(MockObject $adapter, MockObject $normalizer) use ($json): void {
             $normalizer
@@ -478,7 +494,9 @@ class LockTokenPoolTest extends LockeyTestCase
         
         $resource = $this->getMockBuilder(LockableResourceInterface::class)->getMock();
         $resource->expects($this->once())->method("getLockableName")->will($this->returnValue("FooResource"));
-        $resource->expects($this->once())->method("getLockableHierarchy")->will($this->returnValue(["BarResource", "MozResource"]));
+        $resource->expects($this->any())->method("getLockableHierarchy")->will($this->returnValue([
+            self::initializeResource("BarResource"),
+            self::initializeResource("MozResource")]));
         
         $action = function(MockObject $adapter, MockObject $normalizer) use ($json): void {
             $normalizer
@@ -544,6 +562,57 @@ class LockTokenPoolTest extends LockeyTestCase
             $action->call($this, $adapter, $normalizer);
         
         return new LockTokenPool($adapter, $normalizer);
+    }
+    
+    /**
+     * Initialize a new simple anonymous class wrapping an implementation of LockableResourceInterface
+     * 
+     * @param string $name
+     *   Resource name
+     * 
+     * @return LockableResourceInterface
+     *   Lockable resource as anonymous class
+     */
+    private static function initializeResource(string $name): LockableResourceInterface
+    {
+        return new class($name) implements LockableResourceInterface {
+            
+            /**
+             * Resource name
+             * 
+             * @var string
+             */
+            private $name;
+            
+            /**
+             * Initialize anonymous resource
+             * 
+             * @param string $name
+             *   Resource name
+             */
+            public function __construct(string $name)
+            {
+                $this->name = $name;
+            }
+            
+            /**
+             * {@inheritDoc}
+             * @see \Ness\Component\Lockey\LockableResourceInterface::getLockableName()
+             */
+            public function getLockableName(): string
+            {
+                return $this->name;
+            }
+            
+            /**
+             * {@inheritDoc}
+             * @see \Ness\Component\Lockey\LockableResourceInterface::getLockableHierarchy()
+             */
+            public function getLockableHierarchy(): ?array
+            {
+                return null;
+            }
+        };
     }
     
 }
