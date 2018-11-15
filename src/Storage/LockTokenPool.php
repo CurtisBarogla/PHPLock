@@ -20,7 +20,7 @@ use Ness\Component\Lockey\Normalizer\ResourceNormalizerInterface;
 use Ness\Component\Lockey\Iterator\HierarchyRecursiveIterator;
 
 /**
- * Native implementation of LockTokeInterface
+ * Native implementation of LockTokenInterface
  * Based on an adapter which establish the connection between the pool and a store
  * No verification are done whatsoever on the resource name as normalizer is handling this responsibility
  * 
