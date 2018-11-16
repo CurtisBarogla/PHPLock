@@ -21,7 +21,7 @@ use Ness\Component\Lockey\Exception\UnlockErrorException;
 
 /**
  * Simple implementation of LockerInterface.
- * Based on a LockTokenPool
+ * Based on a LockTokenPool which provide the transaction mechanism
  * 
  * @author CurtisBarogla <curtis_barogla@outlook.fr>
  *

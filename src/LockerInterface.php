@@ -41,7 +41,8 @@ interface LockerInterface
     
     /**
      * Attribute an exclusive lock on the given resource to the given user for the given duration.
-     * This duration represents the time which the user is able to free the resource and perform action on it 
+     * This duration represents the time which the user is able to free the resource and perform action on it.
+     * If a hierarchy is declared, all related resources MUST be locked and the operation MUST be transactional.
      * If the resource is currently locked, nothing must be performed
      * 
      * @param UserInterface $user
@@ -58,7 +59,8 @@ interface LockerInterface
     
     /**
      * Attribute an share lock on the given resource to the given user and share users for the given duration.
-     * This duration represents the time which the users are able to free the resource and perform actions on it 
+     * This duration represents the time which the users are able to free the resource and perform actions on it
+     * If a hierarchy is declared, all related resources MUST be locked and the operation MUST be transactional.
      * If the resource is currently locked, nothing must be performed
      * 
      * @param UserInterface $user
@@ -81,6 +83,7 @@ interface LockerInterface
     /**
      * Perform the given action on the given resource and free it.
      * Depending of the lock token found for the given resource and the given user, action must be performed or deny.
+     * If a hierarchy is declared, all related resources MUST be freed and the operation MUST be transactional.
      * If no lock token has been assigned to the resource, action MUST be denied no matter what
      * 
      * @param UserInterface $user
@@ -103,6 +106,7 @@ interface LockerInterface
     /**
      * Bypass a lock attributed to the given resource.
      * If the resource is not currently locked, a simple exclusive lock will be attributed to the given resource for the given user for the given duration
+     * If a hierarchy is declared, all related resources MUST be locked and the operation MUST be transactional.
      * If the resource is actually locked, it will cancel it.
      * 
      * @param UserInterface $user
