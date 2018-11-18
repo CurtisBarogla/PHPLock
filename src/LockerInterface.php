@@ -104,7 +104,7 @@ interface LockerInterface
     public function free(UserInterface $user, LockableResourceInterface $resource, \Closure $action): void;
     
     /**
-     * Bypass a lock attributed to the given resource.
+     * Bypass a lock attributed to the given resource and set an exclusive lock.
      * If the resource is not currently locked, a simple exclusive lock will be attributed to the given resource for the given user for the given duration
      * If a hierarchy is declared, all related resources MUST be locked and the operation MUST be transactional.
      * If the resource is actually locked, it will cancel it.
