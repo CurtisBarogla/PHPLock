@@ -602,6 +602,19 @@ $locker->free($fooUser, $fooResource, function() use ($fooResourceManager): void
 });
 ~~~
 
+### 7.5 Implementation
+
+This library comes with an implementation of LockerInterface.
+
+It only required you to set a LockTokenPoolInterface implementation.
+
+~~~php
+$lockTokenPool = new LockTokenPoolImplementation();
+$locker = new Locker($lockTokenPool);
+
+// that's it, your locker is initialized
+~~~
+
 ## 8. Contributing
 
 Found something **wrong** (nothing is perfect) ? Wanna talk or participate ? <br />
