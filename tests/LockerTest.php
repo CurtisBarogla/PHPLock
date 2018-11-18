@@ -343,7 +343,7 @@ class LockerTest extends LockeyTestCase
     public function testExceptionFreeWhenNotMasterOnExclusiveToken(): void
     {
         $this->expectException(LockTokenExpiredException::class);
-        $this->expectExceptionMessage("Your token has been revoked or is invalid as master resource or you're not setted as master on resource 'FooResource");
+        $this->expectExceptionMessage("Your token has been revoked or is invalid. You MUST be setted as master to update the resource : 'FooResource'");
         
         $user = $this->getMockBuilder(UserInterface::class)->getMock();
         $user->expects($this->once())->method("getName")->will($this->returnValue("FooUser"));
@@ -371,7 +371,7 @@ class LockerTest extends LockeyTestCase
     public function testExceptionFreeWhenNotMasterOnSharedToken(): void
     {
         $this->expectException(LockTokenExpiredException::class);
-        $this->expectExceptionMessage("Your token has been revoked or is invalid as master resource or you're not setted as master on resource 'FooResource");
+        $this->expectExceptionMessage("Your token has been revoked or is invalid. You MUST be setted as master to update the resource : 'FooResource'");
         
         $user = $this->getMockBuilder(UserInterface::class)->getMock();
         $user->expects($this->once())->method("getName")->will($this->returnValue("FooUser"));
@@ -399,7 +399,7 @@ class LockerTest extends LockeyTestCase
     public function testExceptionFreeWhenNotInSharedListOnFullySharedToken(): void
     {
         $this->expectException(LockTokenExpiredException::class);
-        $this->expectExceptionMessage("Your token has been revoked or is invalid as master or you're not sharing this resource with the master 'FooUser' on resource 'FooResource'");
+        $this->expectExceptionMessage("Your token has been revoked or is invalid. You MUST be setted as master or sharing the lock with 'FooUser' to update the resource : 'FooResource'");
         
         $user = $this->getMockBuilder(UserInterface::class)->getMock();
         $user->expects($this->once())->method("getName")->will($this->returnValue("FooUser"));

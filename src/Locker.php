@@ -93,11 +93,11 @@ class Locker implements LockerInterface
             case LockToken::EXCLUSIVE:
             case LockToken::SHARE:
                 if(!$token->isMaster($user))
-                    throw new LockTokenExpiredException("Your token has been revoked or is invalid as master resource or you're not setted as master on resource '{$resource->getLockableName()}'");
+                    throw new LockTokenExpiredException("Your token has been revoked or is invalid. You MUST be setted as master to update the resource : '{$resource->getLockableName()}'");
                 break;
             case LockToken::FULL:
                 if(!$token->isMaster($user) && !$token->isSharedWith($user))
-                    throw new LockTokenExpiredException("Your token has been revoked or is invalid as master or you're not sharing this resource with the master '{$token->getMaster()}' on resource '{$resource->getLockableName()}'");
+                    throw new LockTokenExpiredException("Your token has been revoked or is invalid. You MUST be setted as master or sharing the lock with '{$token->getMaster()}' to update the resource : '{$resource->getLockableName()}'");
                 break;
         }
         
