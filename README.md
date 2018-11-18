@@ -1,6 +1,6 @@
 # Lockey Component
 
-This library provides a simple way to attribute a lock to a specific user on a resource preserving its integrity.
+This library provides a simple way to attribute a lock to a specific user on a resource preserving its integrity in case of multiple access.
 
 0. [How to install](#0-installing-the-component)
 1. [Why ?](#1-why)
@@ -145,7 +145,7 @@ class BankAccount implements LockableResourceInterface
 
 ## 3. How to use
 
-Let's now how to use the component and what's better than a "concrete" use case ? (this assume the components described at section : [Make a component lockable](#2-make-a-component-lockable)).
+Let's see now how to use the component and what's better than a "concrete" use case ? (this assume the components described at section : [Make a component lockable](#2-make-a-component-lockable)).
 
 This use case assumes the usage of the native implementation of LockerInterface and LockTokenPoolInterface.
 
@@ -213,7 +213,7 @@ $normalizer->normalize("FooResource") // will return sha1 of FooResource
 
 ## 5. Adapter
 
-An adapter is a simple component allowing to communicate with an external storage with raw values.
+An adapter is a simple component allowing you to communicate with an external storage with raw values.
 
 It consists in an interface : LockTokenStoreAdapterInterface containing 3 methods : 
 - **get()** which is getting a raw value representing a lock token for the resource or null if no token,
@@ -265,9 +265,7 @@ $adapterPSR16 = new CacheLockTokenStoreAdapter($PSR16Cache);
 
 ## 6. Token Pool
 
-Token pool is the component allowing to handle the management of Lock token over resources.
-
-All methods which interacts with an external storage are atomic.
+Token pool is the component allowing you to handle the management of lock tokens over resources.
 
 The interface consists in 3 simple methods : 
 - **getToken()** which try to find a token for the given resource ; it will return null if no token assigned,
@@ -401,16 +399,14 @@ $pool = new LockTokenPool($adapter, $normalizer);
 
 ## 7. Locker
 
-Locker is the main component allowing to set locks (exclusive, share and bypass) and free a resource.
-
-It allows you too to get informations about the current locking state of a resource.
+Locker is the main component allowing you to set locks (exclusive, share and bypass) and free a resource.
 
 Locker provides you methods : 
 - **getState()** fetching information about a lock applied to the given resource over the user,
 - **exclusive()** applying an exclusive lock (strict access to the resource) on the resource for the given user for a certain amount of time,
 - **share()** acting as an exclusive lock but allowing you to share the lock token among multiple users,
-- **free()** which will simply free the resource from the current lock,
-- **bypass()** which revokes all lock tokens applied to the given resource followed by and exclusive lock on the resource for the given user.
+- **free()** which will simply free the resource from the current lock and apply an action on it,
+- **bypass()** which revokes all lock tokens applied to the resource followed by an attributation of an exclusive lock for the given user.
 
 ### 7.1 Lock Token
 
@@ -420,7 +416,7 @@ Lock token is a simple class providing you informations about a lock applied to 
 
 A lock token SHOULD never be instantiated by the user - let the locker the responsability to initialize it for you.
 
-The lock token has two states : mutable and immutable. The token is mutable only during its initialization (therefore never when you're dealing with) and immutable when fetched (majority of the time you're interacting with).
+The lock token has two states : mutable and immutable. The token is mutable only during its initialization (therefore never when you're dealing with) and immutable when fetched (majority of the time, you're interacting with).
 
 Let's see the methods you should only consider : 
 - **getResource()** : access to the resource name which the token is about,
@@ -439,7 +435,7 @@ It consists in some simple methods :
 - **isAccessible()** checks if the user setted is allowed to "read" the resource. Will obviously returns true if no lock has been applied,
 - **getToken()** returns the token applied to the resource if one is found. Returns null if not locked.
 
-Simple case when a resource has been not previously locked
+Simple case when a resource hasn't been previously locked
 
 ~~~php
 // no lock has been applied on the resource yet
